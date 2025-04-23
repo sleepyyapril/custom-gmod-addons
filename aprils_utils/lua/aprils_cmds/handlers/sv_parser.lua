@@ -8,7 +8,6 @@ local table = table
 -- cmd_parse function that takes an input string and returns a parsing function
 -- it returns a function that can be used to get an argument from a command.
 -- argument types are currently limited to greedystring, string and number.
--- use global table 'GNA' ---! outdated?
 
 --[[
 	usage (for 3 arguments):
@@ -60,7 +59,7 @@ function aprils_utils.cmd_parse(input)
 			local targets = {}
 
 			for _, target in player.Iterator() do
-				if target:SteamID() == target_str or target:GetName():sub(1, #target_str):lower() == target_str:lower() then ---! Should also add checking by steamid to this
+				if target:SteamID() == target_str or target:GetName():sub(1, #target_str):lower() == target_str:lower() then
 					table.insert(targets, target)
 				end
 			end
@@ -75,7 +74,7 @@ function aprils_utils.cmd_parse(input)
 			local target_str = string.TrimRight(string.sub(input, count(next_space)))
 
 			for _, target in player.Iterator() do
-				if  target:SteamID() == target_str or target:GetName():sub(1, #target_str):lower() == target_str:lower() then ---! line 62
+				if  target:SteamID() == target_str or target:GetName():sub(1, #target_str):lower() == target_str:lower() then
 					return target
 				end
 			end
