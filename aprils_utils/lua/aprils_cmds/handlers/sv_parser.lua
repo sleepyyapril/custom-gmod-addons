@@ -22,9 +22,9 @@ local supported_types = {
 	["string"] = true,
 	["greedystring"] = true,
 	["number"] = true,
-    ["players"] = true,
-    ["player"] = true,
-    ["steamid"] = true
+	["players"] = true,
+	["player"] = true,
+	["steamid"] = true
 }
 
 function aprils_utils.is_supported_type(input)
