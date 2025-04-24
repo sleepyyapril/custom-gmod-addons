@@ -27,13 +27,13 @@ local supported_types = {
 	["steamid"] = true
 }
 
-function aprils_utils.is_supported_type(input)
-	assert(type(input) == "string")
-	return supported_types[input]
+function aprils_utils.is_supported_type(type_str)
+	assert(type(type_str) == "string")
+	return supported_types[type_str]
 end
 
-function aprils_utils.cmd_parse(input)
-	assert(type(input) == "string")
+function aprils_utils.cmd_parse(type_str)
+	assert(type(type_str) == "string")
 	local current_character = 1
 
 	local function count(n)
@@ -43,19 +43,19 @@ function aprils_utils.cmd_parse(input)
 	end
 
 	local function parse_as(as)
-		if current_character > #input then return nil end
+		if current_character > #type_str then return nil end
 
 		if as == "greedystring" then
-			return string.sub(input, count(#input))
+			return string.sub(type_str, count(#type_str))
 		elseif as == "string" then
-			local next_space = string.find(input, " ", current_character) or #input
-			return string.TrimRight(string.sub(input, count(next_space)))
+			local next_space = string.find(type_str, " ", current_character) or #type_str
+			return string.TrimRight(string.sub(type_str, count(next_space)))
 		elseif as == "number" then
-			local next_space = string.find(input, " ", current_character) or #input
-			return tonumber(string.sub(input, count(next_space)))
+			local next_space = string.find(type_str, " ", current_character) or #type_str
+			return tonumber(string.sub(type_str, count(next_space)))
 		elseif as == "players" then
-			local next_space = string.find(input, " ", current_character) or #input
-			local target_str = string.TrimRight(string.sub(input, count(next_space)))
+			local next_space = string.find(type_str, " ", current_character) or #type_str
+			local target_str = string.TrimRight(string.sub(type_str, count(next_space)))
 			local targets = {}
 
 			for _, target in player.Iterator() do
@@ -70,8 +70,8 @@ function aprils_utils.cmd_parse(input)
 				return
 			end
 		elseif as == "player" then
-			local next_space = string.find(input, " ", current_character) or #input
-			local target_str = string.TrimRight(string.sub(input, count(next_space)))
+			local next_space = string.find(type_str, " ", current_character) or #type_str
+			local target_str = string.TrimRight(string.sub(type_str, count(next_space)))
 
 			for _, target in player.Iterator() do
 				if  target:SteamID() == target_str or target:GetName():sub(1, #target_str):lower() == target_str:lower() then
@@ -81,8 +81,8 @@ function aprils_utils.cmd_parse(input)
 
 			return
 		elseif as == "steamid" then
-			local next_space = string.find(input, " ", current_character) or #input
-			local target_str = string.TrimRight(string.sub(input, count(next_space)))
+			local next_space = string.find(type_str, " ", current_character) or #type_str
+			local target_str = string.TrimRight(string.sub(type_str, count(next_space)))
 
 			return player.GetBySteamID(target_str)
 		else
