@@ -3,8 +3,8 @@ aprils_utils.groups = aprils_utils.groups or {}
 aprils_utils.registry = aprils_utils.registry or {}
 
 alib = alib or {}
-alib.loader = include("aprilslib/loader.lua")
-alib.color = include("aprilslib/color.lua")
+alib.loader = include("autils_loader.lua")
+alib.color = include("autils_color.lua")
 
 if SERVER then
     util.AddNetworkString("autils_sendcolortable")

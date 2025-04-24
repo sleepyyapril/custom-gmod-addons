@@ -1,4 +1,4 @@
-local color_utils = include("aprilslib/color.lua")
+local color_utils = include("autils_color.lua")
 
 local function find_hex_codes(message)
     local new_message_data = {}
