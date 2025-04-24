@@ -11,9 +11,9 @@ if SERVER then
     util.AddNetworkString("autils_sendtranslatedtext")
 end
 
---! UTILS - REQUIRED BY ALL
-alib.loader.load_file("aprils_utils/sh_player_meta.lua")
-alib.loader.load_file("aprils_utils/cl_messages.lua")
+--! EXTRA - REQUIRED BY ALL
+alib.loader.load_file("aprils_extra/sh_player_meta.lua")
+alib.loader.load_file("aprils_extra/cl_messages.lua")
 
 --! PERMISSIONS - REQUIRED BY COMMANDS
 alib.loader.load_file("aprils_permissions/sv_permissions.lua")
@@ -22,3 +22,5 @@ alib.loader.load_file("aprils_permissions/sv_permissions.lua")
 alib.loader.load_file("aprils_cmds/sh_acmds_config.lua")
 alib.loader.load_file("aprils_cmds/handlers/sv_parser.lua")
 alib.loader.load_file("aprils_cmds/handlers/sv_command_handler.lua")
+
+hook.Call("autils:ready")
